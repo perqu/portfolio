@@ -1,0 +1,5 @@
+black
+Django
+pylint
+PyMySQL
+python-dotenv
