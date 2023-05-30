@@ -10,7 +10,12 @@ reqs:
 	$(PYTHON) reqs.py
 
 install:
-	$(PIP) install -r requirements.txt
+	$(PIP) install --upgrade $(PIP) &&\
+		$(PIP) install -r requirements.txt
+
+migrate:
+	python manage.py makemigrations
+	python manage.py migrate
 
 run:
 	$(PYTHON) manage.py runserver
@@ -22,6 +27,6 @@ lint:
 	pylint *.py --exit-zero
 
 format:
-	black ../$(PROJECT_NAME)
+	black *.py
 
 all: lint format reqs install test
